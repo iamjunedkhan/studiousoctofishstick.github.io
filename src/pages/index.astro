@@ -1,8 +1,8 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
 <!doctype html>
@@ -13,37 +13,176 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<main>
+				<section class="hero">
+					<h1>Salesforce Dev Notes</h1>
+
+					<p class="hero-description">
+						Practical Salesforce tutorials, Apex guides, Lightning
+						Web Components, Agentforce, integrations, and real-world
+						development tips.
+					</p>
+
+					<div class="hero-buttons">
+						<a href="/astro-blog/blog" class="btn-primary">Read Articles</a>
+						<a href="/astro-blog/about" class="btn-secondary">About Me</a>
+					</div>
+				</section>
+
+				<section class="categories">
+					<h2>Explore Topics</h2>
+
+					<div class="category-grid">
+						<div class="card">
+							<h3>Apex</h3>
+							<p>
+								Triggers, Classes, SOQL, Batch Apex and Best
+								Practices.
+							</p>
+						</div>
+
+						<div class="card">
+							<h3>LWC</h3>
+							<p>
+								Lightning Web Components from beginner to
+								advanced.
+							</p>
+						</div>
+
+						<div class="card">
+							<h3>Agentforce</h3>
+							<p>Build AI-powered Salesforce solutions.</p>
+						</div>
+
+						<div class="card">
+							<h3>Integrations</h3>
+							<p>
+								REST APIs, Webhooks, Named Credentials and more.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="featured">
+					<h2>Featured Articles</h2>
+
+					<div class="article-grid">
+						<div class="article-card">
+							<h3>What is Salesforce?</h3>
+							<p>
+								A beginner-friendly introduction to the
+								Salesforce platform.
+							</p>
+						</div>
+
+						<div class="article-card">
+							<h3>Understanding Apex Triggers</h3>
+							<p>Learn how triggers work and when to use them.</p>
+						</div>
+
+						<div class="article-card">
+							<h3>Introduction to Lightning Web Components</h3>
+							<p>Build modern user interfaces on Salesforce.</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="about-preview">
+					<h2>About This Blog</h2>
+
+					<p>
+						I'm Juned, a Salesforce Developer passionate about
+						sharing practical tutorials, coding examples, system
+						design concepts, and lessons learned from real-world
+						Salesforce projects.
+					</p>
+				</section>
+			</main>
 		</main>
 		<Footer />
 	</body>
 </html>
+<style>
+	main {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+
+	.hero {
+		text-align: center;
+		padding: 5rem 0;
+	}
+
+	.hero h1 {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+		color: #0176d3;
+	}
+
+	.hero-description {
+		font-size: 1.2rem;
+		max-width: 700px;
+		margin: 0 auto 2rem;
+		color: #64748b;
+	}
+
+	.hero-buttons {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.btn-primary,
+	.btn-secondary {
+		padding: 0.8rem 1.5rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.btn-primary {
+		background: #0176d3;
+		color: white;
+	}
+
+	.btn-secondary {
+		border: 1px solid #cbd5e1;
+		color: #334155;
+	}
+
+	.categories,
+	.featured,
+	.about-preview {
+		margin-top: 5rem;
+	}
+
+	.category-grid,
+	.article-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+
+	.card,
+	.article-card {
+		padding: 1.5rem;
+		border: 1px solid #e2e8f0;
+		border-radius: 12px;
+		background: white;
+		transition: transform 0.2s;
+	}
+
+	.card:hover,
+	.article-card:hover {
+		transform: translateY(-4px);
+	}
+
+	.about-preview {
+		text-align: center;
+		max-width: 700px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+</style>
