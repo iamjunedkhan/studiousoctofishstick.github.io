@@ -34,6 +34,15 @@ const { title, description, image = FallbackImage } = Astro.props;
 
 <Font cssVariable="--font-atkinson" preload />
 
+<!-- Theme Script to avoid theme flash -->
+<script is:inline>
+	(function() {
+		const theme = localStorage.getItem('theme') || 
+			(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		document.documentElement.setAttribute('data-theme', theme);
+	})();
+</script>
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 

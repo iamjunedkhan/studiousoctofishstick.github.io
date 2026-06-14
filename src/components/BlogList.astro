@@ -1,0 +1,206 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import readingTime from "reading-time";
+
+const { posts } = Astro.props;
+
+const postsWithTime = posts.map((post: any) => {
+	const stats = readingTime(post.body || "");
+	return {
+		...post,
+		readingTime: stats.text,
+	};
+});
+---
+
+<section class="articles-grid">
+	{
+		postsWithTime.map((post: any) => (
+			<article
+				class="article-card"
+				data-title={post.data.title.toLowerCase()}
+				data-desc={post.data.description.toLowerCase()}
+				data-category={post.data.category || ""}
+			>
+				<div class="card-header">
+					<span class={`tag-badge ${post.data.category?.toLowerCase() || ''}`}>
+						{post.data.category}
+					</span>
+					<span class="read-time-badge">{post.readingTime}</span>
+				</div>
+
+				<div class="card-body">
+					<h3>
+						<a href={`${import.meta.env.BASE_URL}/blog/${post.id.replace("/index", "")}/`}>
+							{post.data.title}
+						</a>
+					</h3>
+					<p>{post.data.description}</p>
+				</div>
+
+				<div class="card-footer">
+					<div class="author-info">
+						<div class="author-avatar">
+							{post.data.author ? post.data.author.charAt(0) : "J"}
+						</div>
+						<div class="author-meta">
+							<span class="author-name">{post.data.author || "Juned Khan"}</span>
+							<span class="pub-date"><FormattedDate date={post.data.pubDate} /></span>
+						</div>
+					</div>
+					<a
+						href={`${import.meta.env.BASE_URL}/blog/${post.id.replace("/index", "")}/`}
+						class="read-more-link"
+					>
+						Read →
+					</a>
+				</div>
+			</article>
+		))
+	}
+</section>
+
+<style>
+	.articles-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.75rem;
+		width: 100%;
+	}
+
+	.article-card {
+		background-color: var(--bg-secondary);
+		border: 1px solid var(--border-color);
+		border-radius: 16px;
+		padding: 1.75rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+		transition: all 0.25s ease;
+	}
+
+	.article-card:hover {
+		transform: translateY(-5px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--accent);
+	}
+
+	.card-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.25rem;
+	}
+
+	.tag-badge {
+		padding: 0.25rem 0.75rem;
+		border-radius: 99px;
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	.tag-badge.apex { background-color: rgba(1, 118, 211, 0.1); color: #0176d3; }
+	.tag-badge.lwc { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
+	.tag-badge.agentforce { background-color: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+	.tag-badge.integrations { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+
+	.read-time-badge {
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		font-weight: 500;
+	}
+
+	.card-body {
+		flex: 1;
+	}
+
+	.card-body h3 {
+		font-size: 1.35rem;
+		line-height: 1.3;
+		margin-bottom: 0.75rem;
+	}
+
+	.card-body h3 a {
+		color: var(--text-primary);
+		text-decoration: none;
+	}
+
+	.card-body h3 a:hover {
+		color: var(--accent);
+	}
+
+	.card-body p {
+		color: var(--text-secondary);
+		font-size: 0.95rem;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+	}
+
+	.card-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1px solid var(--border-color);
+		padding-top: 1.25rem;
+		margin-top: auto;
+	}
+
+	.author-info {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+	}
+
+	.author-avatar {
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background: var(--accent-gradient);
+		color: #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 700;
+		font-size: 0.85rem;
+	}
+
+	.author-meta {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.author-name {
+		font-size: 0.85rem;
+		color: var(--text-primary);
+		font-weight: 600;
+		line-height: 1.2;
+	}
+
+	.pub-date {
+		font-size: 0.75rem;
+		color: var(--text-muted);
+	}
+
+	.read-more-link {
+		font-weight: 700;
+		font-size: 0.9rem;
+		color: var(--accent);
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		text-decoration: none;
+	}
+
+	.read-more-link:hover {
+		color: var(--accent-hover);
+		transform: translateX(3px);
+	}
+
+	@media (max-width: 640px) {
+		.articles-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

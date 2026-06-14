@@ -1,6 +1,4 @@
 ---
-import AboutHeroImage from "../assets/blog-placeholder-about.jpg";
-import Layout from "../layouts/BlogPost.astro";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -18,102 +16,104 @@ import { SITE_TITLE } from "../consts";
 	<body>
 		<Header />
 
-		<main class="container">
-			<section class="hero">
+		<main class="about-container">
+			<section class="about-hero">
+				<div class="avatar-large">J</div>
 				<h1>About Me</h1>
-
-				<p class="subtitle">
-					Salesforce Developer • Technical Writer • Lifelong Learner
-				</p>
+				<p class="subtitle-badge">Salesforce Developer • Tech Writer • Community Contributor</p>
 			</section>
 
-			<section class="content">
-				<h2>Hello, I'm Juned 👋</h2>
+			<section class="about-content">
+				<div class="intro-card glass">
+					<h2>Hello, I'm Juned 👋</h2>
+					<p>
+						I am a passionate Salesforce Developer dedicated to designing and building scalable applications, resolving complex business problems, and contributing back to the global Salesforce community.
+					</p>
+					<p>
+						Throughout my career, I've designed and written robust Apex backends, modern Lightning Web Component frontends, complex API integrations, automated triggers, and conversational AI solutions. 
+					</p>
+					<p>
+						This blog is my notebook—a repository of practical guides, tutorials, design choices, and real-world system design lessons to help developers refine their Salesforce skills.
+					</p>
+				</div>
 
-				<p>
-					I'm a Salesforce Developer passionate about building scalable
-					applications, solving complex business problems, and sharing
-					knowledge with the Salesforce community.
-				</p>
-
-				<p>
-					Over the years, I've worked with Apex, Lightning Web Components,
-					Integrations, APIs, Automation, and modern web technologies. This
-					blog is where I document what I learn and share practical
-					tutorials that help developers grow their Salesforce skills.
-				</p>
-
-				<h2>What You'll Find Here</h2>
-
-				<div class="grid">
-					<div class="card">
-						<h3>Apex Development</h3>
-						<p>
-							Triggers, Classes, Batch Apex, Queueable Apex,
-							SOQL, Governor Limits, and best practices.
-						</p>
+				<h2>What I Cover Here</h2>
+				<div class="skills-grid">
+					<div class="skill-card glass">
+						<div class="skill-icon apex">
+							<svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+						</div>
+						<h3>Apex & Backend</h3>
+						<p>Triggers, classes, asynchronous batches, SOQL optimization, testing frameworks, and Salesforce Governor Limits.</p>
 					</div>
 
-					<div class="card">
-						<h3>Lightning Web Components</h3>
-						<p>
-							Modern Salesforce UI development with practical
-							examples and reusable components.
-						</p>
+					<div class="skill-card glass">
+						<div class="skill-icon lwc">
+							<svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+						</div>
+						<h3>Modern UI with LWC</h3>
+						<p>Lightning Web Components design, state management, wire service integrations, and responsive custom Salesforce layouts.</p>
 					</div>
 
-					<div class="card">
+					<div class="skill-card glass">
+						<div class="skill-icon agent">
+							<svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 1 7.54 16.59c-.24.25-.61.35-.95.24a9.99 9.99 0 0 1-13.18 0c-.34.11-.71.01-.95-.24A10 10 0 0 1 12 2z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+						</div>
 						<h3>Agentforce & AI</h3>
-						<p>
-							Exploring Salesforce AI capabilities and
-							real-world Agentforce implementations.
-						</p>
+						<p>Exploring Salesforce AI capabilities, prompt template configurations, copilot integrations, and conversational agents.</p>
 					</div>
 
-					<div class="card">
-						<h3>Integrations</h3>
-						<p>
-							REST APIs, Webhooks, Named Credentials,
-							Authentication, and external systems.
-						</p>
+					<div class="skill-card glass">
+						<div class="skill-icon integration">
+							<svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+						</div>
+						<h3>APIs & Integrations</h3>
+						<p>REST/SOAP API callouts, custom Apex webhooks, OAuth token flows, Named Credentials, and external app syncing.</p>
 					</div>
 				</div>
 
-				<h2>My Mission</h2>
+				<div class="timeline-section glass">
+					<h2>Core Focus Areas</h2>
+					<ul class="focus-list">
+						<li>
+							<span class="focus-bullet"></span>
+							<div>
+								<strong>Enterprise Salesforce Architecture:</strong> Designing clean, decoupled trigger handlers, service layers, and selector classes.
+							</div>
+						</li>
+						<li>
+							<span class="focus-bullet"></span>
+							<div>
+								<strong>Performance Tuning:</strong> Minimizing SOQL queries, optimizing DML batches, and resolving complex row-locks.
+							</div>
+						</li>
+						<li>
+							<span class="focus-bullet"></span>
+							<div>
+								<strong>Salesforce AI Era:</strong> Staying at the forefront of AI-driven developer workflows with Agentforce.
+							</div>
+						</li>
+					</ul>
+				</div>
 
-				<p>
-					My goal is to create practical, easy-to-understand Salesforce
-					content that helps developers learn faster and build better
-					solutions.
-				</p>
-
-				<p>
-					Instead of focusing only on theory, I prefer sharing real-world
-					examples, implementation guides, troubleshooting techniques, and
-					best practices that can be applied immediately.
-				</p>
-
-				<h2>Current Focus Areas</h2>
-
-				<ul>
-					<li>Salesforce Development</li>
-					<li>Lightning Web Components (LWC)</li>
-					<li>Agentforce & AI</li>
-					<li>API Integrations</li>
-					<!-- <li>System Design</li>
-					<li>Full-Stack Development</li> -->
-				</ul>
-
-				<h2>Let's Connect</h2>
-
-				<p>
-					If you're a Salesforce developer, student, or technology
-					enthusiast, I hope you find something useful here.
-				</p>
-
-				<p>
-					Thanks for visiting and being part of this journey.
-				</p>
+				<div class="connect-section">
+					<h2>Let's Connect</h2>
+					<p>If you're a Salesforce developer, system architect, or tech enthusiast, feel free to reach out and say hello!</p>
+					<div class="connect-buttons">
+						<a href="https://github.com/iamjunedkhan" target="_blank" rel="noopener noreferrer" class="connect-btn github">
+							<svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+							GitHub
+						</a>
+						<a href="https://linkedin.com/in/iamjunedkhan" target="_blank" rel="noopener noreferrer" class="connect-btn linkedin">
+							<svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+							LinkedIn
+						</a>
+						<a href="https://twitter.com/iamjunedkhan" target="_blank" rel="noopener noreferrer" class="connect-btn twitter">
+							<svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+							Twitter/X
+						</a>
+					</div>
+				</div>
 			</section>
 		</main>
 
@@ -122,63 +122,257 @@ import { SITE_TITLE } from "../consts";
 </html>
 
 <style>
-	.container {
-		max-width: 1000px;
+	.about-container {
+		max-width: 900px;
 		margin: 0 auto;
-		padding: 2rem;
+		padding: 3rem 1.5rem;
 	}
 
-	.hero {
+	.about-hero {
 		text-align: center;
-		padding: 4rem 0;
+		padding: 3rem 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
-	.hero h1 {
-		font-size: 3rem;
-		margin-bottom: 1rem;
-		color: #0176d3;
+	.avatar-large {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		background: var(--accent-gradient);
+		color: #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 800;
+		font-size: 2.25rem;
+		box-shadow: var(--shadow-glow);
+		margin-bottom: 1.5rem;
 	}
 
-	.subtitle {
-		font-size: 1.2rem;
-		color: #64748b;
+	.about-hero h1 {
+		font-size: clamp(2.25rem, 5vw, 3.25rem);
+		letter-spacing: -0.03em;
+		font-weight: 800;
+		margin-bottom: 0.75rem;
 	}
 
-	.content h2 {
-		margin-top: 3rem;
-		color: #1e293b;
+	.subtitle-badge {
+		background-color: var(--bg-tertiary);
+		color: var(--accent);
+		font-weight: 600;
+		font-size: 0.875rem;
+		padding: 0.4rem 1.2rem;
+		border-radius: 99px;
+		border: 1px solid var(--border-color);
 	}
 
-	.content p {
-		line-height: 1.8;
-		color: #475569;
-	}
-
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 1.5rem;
+	.about-content {
 		margin-top: 2rem;
 	}
 
-	.card {
-		padding: 1.5rem;
-		border: 1px solid #e2e8f0;
-		border-radius: 12px;
-		background: white;
+	.intro-card {
+		padding: 2.5rem;
+		border-radius: 20px;
+		margin-bottom: 4rem;
 	}
 
-	.card h3 {
-		color: #0176d3;
+	.intro-card h2 {
+		font-size: 1.6rem;
+		font-weight: 800;
+		margin-bottom: 1.25rem;
+	}
+
+	.intro-card p {
+		font-size: 1.05rem;
+		line-height: 1.75;
+		color: var(--text-secondary);
+	}
+
+	.intro-card p:last-child {
+		margin-bottom: 0;
+	}
+
+	.about-content h2 {
+		font-size: 1.75rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	/* Skills Grid */
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 4rem;
+	}
+
+	.skill-card {
+		padding: 2rem 1.5rem;
+		border-radius: 16px;
+		transition: all 0.25s ease;
+	}
+
+	.skill-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+		border-color: var(--accent);
+	}
+
+	.skill-icon {
+		width: 40px;
+		height: 40px;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1rem;
+	}
+
+	.skill-icon.apex { background: rgba(1, 118, 211, 0.1); color: #0176d3; }
+	.skill-icon.lwc { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+	.skill-icon.agent { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+	.skill-icon.integration { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+
+	.skill-card h3 {
+		font-size: 1.15rem;
 		margin-bottom: 0.5rem;
 	}
 
-	ul {
-		padding-left: 1.5rem;
+	.skill-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		margin-bottom: 0;
+		line-height: 1.55;
 	}
 
-	li {
-		margin-bottom: 0.75rem;
+	/* Timeline Core Focus */
+	.timeline-section {
+		padding: 2.5rem;
+		border-radius: 20px;
+		margin-bottom: 4rem;
+	}
+
+	.timeline-section h2 {
+		text-align: left;
+		margin-bottom: 1.5rem;
+	}
+
+	.focus-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.focus-list li {
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+	}
+
+	.focus-bullet {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--accent);
+		margin-top: 0.6rem;
+		flex-shrink: 0;
+	}
+
+	.focus-list div {
+		font-size: 0.975rem;
+		color: var(--text-secondary);
+		line-height: 1.55;
+	}
+
+	.focus-list strong {
+		color: var(--text-primary);
+	}
+
+	/* Connect Section */
+	.connect-section {
+		text-align: center;
+		padding: 2rem 0;
+	}
+
+	.connect-section p {
+		color: var(--text-secondary);
+		margin-bottom: 2rem;
+		font-size: 1.05rem;
+	}
+
+	.connect-buttons {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.connect-btn {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.5rem;
+		border-radius: 10px;
+		font-weight: 700;
+		font-size: 0.95rem;
+		border: 1px solid var(--border-color);
+		color: var(--text-secondary);
+		background-color: var(--bg-secondary);
+		transition: all 0.25s ease;
+	}
+
+	.connect-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.connect-btn.github:hover {
+		border-color: #24292e;
+		color: #24292e;
+		background-color: #f6f8fa;
+	}
+	:global(html[data-theme="dark"]) .connect-btn.github:hover {
+		border-color: #ffffff;
+		color: #ffffff;
+		background-color: #24292e;
+	}
+
+	.connect-btn.linkedin:hover {
+		border-color: #0077b5;
+		color: #0077b5;
+		background-color: #f0f7fa;
+	}
+	:global(html[data-theme="dark"]) .connect-btn.linkedin:hover {
+		border-color: #0077b5;
+		color: #0077b5;
+		background-color: rgba(0, 119, 181, 0.1);
+	}
+
+	.connect-btn.twitter:hover {
+		border-color: #1da1f2;
+		color: #1da1f2;
+		background-color: #f5fafd;
+	}
+	:global(html[data-theme="dark"]) .connect-btn.twitter:hover {
+		border-color: #1da1f2;
+		color: #1da1f2;
+		background-color: rgba(29, 161, 242, 0.1);
+	}
+
+	@media (max-width: 768px) {
+		.intro-card, .timeline-section {
+			padding: 2rem 1.5rem;
+		}
+
+		.connect-btn {
+			width: 100%;
+			justify-content: center;
+		}
 	}
 </style>
-```
+</html>

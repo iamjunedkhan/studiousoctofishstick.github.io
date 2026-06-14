@@ -1,5 +1,5 @@
 ---
-title: 'Understanding Apex Triggers in Salesforce'
+title: 'POST 1'
 description: 'Learn what Apex Triggers are, when to use them, and how to write scalable trigger logic using Salesforce best practices.'
 pubDate: 'Jun 14 2026'
 heroImage: './cover.jpeg'
