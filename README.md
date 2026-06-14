@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Astro Starter Kit: Blog
 
 ```sh
@@ -61,3 +62,7 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 ## Credit
 
 This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+=======
+# studious-octo-fishstick
+This is my super cool Github pages site! 
+>>>>>>> 03b3a2303e64396dc2c3dd2701c8290c18994325
