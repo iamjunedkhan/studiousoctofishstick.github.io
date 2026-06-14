@@ -6,8 +6,8 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
-	base: '/astro-blog',
+	site: 'https://iamjunedkhan.github.io',
+	base: '/studiousoctofishstick.github.io',
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		shikiConfig: {
