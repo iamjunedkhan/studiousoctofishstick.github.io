@@ -142,7 +142,7 @@ AccountTrigger
 Avoid:
 
 ```text
-AccountValidationTrigger
+AccountValidationTrigger  sfsdf
 AccountUpdateTrigger
 AccountNotificationTrigger
 ```
