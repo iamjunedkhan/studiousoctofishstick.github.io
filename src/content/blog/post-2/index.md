@@ -51,14 +51,14 @@ This is where Apex Triggers become useful.
 
 Salesforce supports several trigger events.
 
-| Event | Description |
-|---------|------------|
-| before insert | Executes before record creation |
-| after insert | Executes after record creation |
-| before update | Executes before record update |
-| after update | Executes after record update |
-| before delete | Executes before deletion |
-| after delete | Executes after deletion |
+| Event          | Description                        |
+| -------------- | ---------------------------------- |
+| before insert  | Executes before record creation    |
+| after insert   | Executes after record creation     |
+| before update  | Executes before record update      |
+| after update   | Executes after record update       |
+| before delete  | Executes before deletion           |
+| after delete   | Executes after deletion            |
 | after undelete | Executes when a record is restored |
 
 ---
@@ -75,7 +75,7 @@ trigger AccountTrigger on Account (before insert) {
     }
 
 }
-````
+```
 
 This trigger runs before an Account is inserted and updates the Description field.
 
@@ -277,15 +277,16 @@ Apex Triggers are a powerful tool for implementing custom business logic in Sale
 
 When writing triggers:
 
-* Keep them lightweight
-* Use helper classes
-* Bulkify your code
-* Avoid SOQL and DML inside loops
-* Follow a trigger framework
+- Keep them lightweight
+- Use helper classes
+- Bulkify your code
+- Avoid SOQL and DML inside loops
+- Follow a trigger framework
 
 By following these best practices, you'll create scalable and maintainable Salesforce applications.
 
 Happy coding! 🚀
 
 ```
+
 ```
