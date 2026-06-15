@@ -2,7 +2,7 @@
 title: "Salesforce Summer ’26 Release: Everything Developers and Admins Need to Know"
 description: "Explore the biggest Salesforce Summer ’26 Release features including Agentforce Builder, Agent Script, Multi-Agent Orchestration, AI-powered development, security enhancements, and productivity improvements."
 pubDate: "Jun 15 2026"
-heroImage: "./cover.jpeg"
+heroImage: "./summer-26-release-cover.png"
 category: "Salesforce Releases"
 author: "Juned Khan"
 ---
