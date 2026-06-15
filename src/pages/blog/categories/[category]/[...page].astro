@@ -1,20 +1,40 @@
 ---
 import { getCollection } from "astro:content";
-import BaseHead from "../../components/BaseHead.astro";
-import Footer from "../../components/Footer.astro";
-import Header from "../../components/Header.astro";
-import Sidebar from "../../components/Sidebar.astro";
-import { POSTS_PER_PAGE, SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
-import BlogList from "../../components/BlogList.astro";
+import type { GetStaticPaths } from "astro";
+import BaseHead from "../../../../components/BaseHead.astro";
+import Footer from "../../../../components/Footer.astro";
+import Header from "../../../../components/Header.astro";
+import BlogList from "../../../../components/BlogList.astro";
+import Sidebar from "../../../../components/Sidebar.astro";
+import { POSTS_PER_PAGE, SITE_TITLE } from "../../../../consts";
 
-const allPosts = (await getCollection("blog")).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+	const allPosts = (await getCollection("blog")).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	);
+	
+	// Default predefined categories + actual post categories
+	const predefined = ["Apex", "LWC", "Agentforce", "Integrations", "Salesforce Dev Notes"];
+	const postCategories = allPosts.map(post => post.data.category).filter(Boolean) as string[];
+	const categories = [...new Set([...predefined, ...postCategories])];
+	
+	return categories.flatMap((category) => {
+		const slug = category.toLowerCase().replace(/\s+/g, "-");
+		const filteredPosts = allPosts.filter(post => post.data.category === category);
+			
+		return paginate(filteredPosts, {
+			params: { category: slug },
+			props: { categoryName: category },
+			pageSize: POSTS_PER_PAGE,
+		});
+	});
+}
 
-const posts = allPosts.slice(0, POSTS_PER_PAGE);
-const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+const { page, categoryName } = Astro.props as any;
+const { category } = Astro.params;
 
-// Get all unique categories for dynamic filter pills
+// Get all unique categories for rendering dynamic pills
+const allPosts = await getCollection("blog");
 const predefined = ["Apex", "LWC", "Agentforce", "Integrations", "Salesforce Dev Notes"];
 const postCategories = allPosts.map(post => post.data.category).filter(Boolean) as string[];
 const categories = [...new Set([...predefined, ...postCategories])].sort();
@@ -23,14 +43,17 @@ const categories = [...new Set([...predefined, ...postCategories])].sort();
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Articles | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead
+			title={`${categoryName} Articles | ${SITE_TITLE}`}
+			description={`Salesforce articles in the ${categoryName} category`}
+		/>
 	</head>
 	<body>
 		<Header />
 		<main>
 			<section class="blog-header">
-				<h1>Salesforce Publications</h1>
-				<p>Practical guides, Apex architecture, Lightning Web Components, and integrations.</p>
+				<h1>{categoryName}</h1>
+				<p>Browse all developer guides, tutorials, and publications in {categoryName}.</p>
 
 				<div class="search-filters">
 					<div class="search-wrapper">
@@ -43,14 +66,14 @@ const categories = [...new Set([...predefined, ...postCategories])].sort();
 						/>
 					</div>
 					<div class="filter-pills">
-						<a href={`${import.meta.env.BASE_URL}/blog`} class="pill active">All</a>
+						<a href={`${import.meta.env.BASE_URL}/blog`} class="pill">All</a>
 						{
 							categories.map((cat) => {
 								const catSlug = cat!.toLowerCase().replace(/\s+/g, "-");
 								return (
 									<a
 										href={`${import.meta.env.BASE_URL}/blog/categories/${catSlug}`}
-										class="pill"
+										class={`pill ${catSlug === category ? "active" : ""}`}
 									>
 										{cat}
 									</a>
@@ -64,26 +87,41 @@ const categories = [...new Set([...predefined, ...postCategories])].sort();
 			<div class="site-layout-grid">
 				<div class="main-content-flow">
 					<div class="blog-list-container">
-						<BlogList posts={posts} />
+						<BlogList posts={page.data} />
 						
 						<div class="no-results" id="no-results-msg">
 							<svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
 							<h3>No articles found</h3>
-							<p>Try searching for a different keyword or category on this page.</p>
+							<p>Try searching for a different keyword on this page.</p>
 						</div>
 					</div>
 
-					{totalPages > 1 && (
-						<nav class="pagination">
-							<a href={`${import.meta.env.BASE_URL}/blog/page/2`} class="btn-pagination">
-								Next Page →
-							</a>
-						</nav>
-					)}
+					<nav class="pagination">
+						{
+							page.url.prev && (
+								<a href={page.url.prev} class="btn-pagination">
+									← Previous
+								</a>
+							)
+						}
+
+						<span class="page-indicator">
+							Page {page.currentPage} of {page.lastPage}
+						</span>
+
+						{
+							page.url.next && (
+								<a href={page.url.next} class="btn-pagination">
+									Next →
+								</a>
+							)
+						}
+					</nav>
 				</div>
 				<Sidebar />
 			</div>
 		</main>
+
 		<Footer />
 
 		<script>
@@ -264,6 +302,8 @@ const categories = [...new Set([...predefined, ...postCategories])].sort();
 	.pagination {
 		display: flex;
 		justify-content: center;
+		align-items: center;
+		gap: 1.5rem;
 		margin-top: 4rem;
 	}
 
@@ -277,6 +317,7 @@ const categories = [...new Set([...predefined, ...postCategories])].sort();
 		font-size: 0.95rem;
 		transition: all 0.2s ease;
 		box-shadow: var(--shadow-sm);
+		text-decoration: none;
 	}
 
 	.btn-pagination:hover {
@@ -285,6 +326,12 @@ const categories = [...new Set([...predefined, ...postCategories])].sort();
 		color: var(--accent);
 		transform: translateY(-2px);
 		box-shadow: var(--shadow-md);
+	}
+
+	.page-indicator {
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--text-secondary);
 	}
 
 	@media (max-width: 640px) {

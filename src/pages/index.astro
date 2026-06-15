@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { getCollection } from "astro:content";
 import readingTime from "reading-time";
@@ -103,80 +104,133 @@ const postsWithTime = posts.map((post) => {
 				</div>
 			</section>
 
-			<section class="articles-section">
-				<div class="section-header">
-					<h2>Latest Publications</h2>
-					<p>Stay up to date with the latest developer guides and articles.</p>
-				</div>
+			<div class="site-layout-grid">
+				<!-- Main Content Left (70%) -->
+				<div class="main-content-flow">
+					<section class="articles-section">
+						<div class="section-header">
+							<h2>Latest Publications</h2>
+							<p>Stay up to date with the latest developer guides and articles.</p>
+						</div>
 
-				<div class="articles-grid" id="articles-container">
-					{
-						postsWithTime.map((post) => (
-							<article
-								class="article-card"
-								data-title={post.data.title.toLowerCase()}
-								data-desc={post.data.description.toLowerCase()}
-								data-category={post.data.category || ""}
-							>
-								<div class="card-header">
-									<span class={`tag-badge ${post.data.category?.toLowerCase()}`}>
-										{post.data.category}
-									</span>
-									<span class="read-time-badge">{post.readingTime}</span>
-								</div>
-
-								<div class="card-body">
-									<h3>
-										<a href={`${import.meta.env.BASE_URL}/blog/${post.id.replace("/index", "")}/`}>
-											{post.data.title}
-										</a>
-									</h3>
-									<p>{post.data.description}</p>
-								</div>
-
-								<div class="card-footer">
-									<div class="author-info">
-										<div class="author-avatar">
-											{post.data.author ? post.data.author.charAt(0) : "J"}
+						{
+							postsWithTime.length > 0 && (
+								<article
+									class="featured-card glass"
+									data-title={postsWithTime[0].data.title.toLowerCase()}
+									data-desc={postsWithTime[0].data.description.toLowerCase()}
+									data-category={postsWithTime[0].data.category || ""}
+								>
+									{postsWithTime[0].data.heroImage && (
+										<div class="featured-img-container">
+											<img
+												src={postsWithTime[0].data.heroImage.src}
+												alt={postsWithTime[0].data.title}
+												class="featured-img"
+											/>
+											{postsWithTime[0].data.category && (
+												<a
+													href={`${import.meta.env.BASE_URL}/blog/categories/${postsWithTime[0].data.category.toLowerCase().replace(/\s+/g, "-")}`}
+													class={`featured-category-badge tag-badge ${postsWithTime[0].data.category.toLowerCase().replace(/\s+/g, "-")}`}
+												>
+													{postsWithTime[0].data.category}
+												</a>
+											)}
 										</div>
-										<span class="author-name">{post.data.author || "Juned Khan"}</span>
+									)}
+									<div class="featured-card-body">
+										<span class="featured-meta">{postsWithTime[0].readingTime} • {new Date(postsWithTime[0].data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+										<h3>
+											<a href={`${import.meta.env.BASE_URL}/blog/${postsWithTime[0].id.replace("/index", "")}/`}>
+												{postsWithTime[0].data.title}
+											</a>
+										</h3>
+										<p>{postsWithTime[0].data.description}</p>
+										<div class="featured-card-footer">
+											<div class="author-info">
+												<div class="author-avatar">
+													{postsWithTime[0].data.author ? postsWithTime[0].data.author.charAt(0) : "J"}
+												</div>
+												<span class="author-name">{postsWithTime[0].data.author || "Juned Khan"}</span>
+											</div>
+											<a href={`${import.meta.env.BASE_URL}/blog/${postsWithTime[0].id.replace("/index", "")}/`} class="read-more-link">
+												Read Article &rarr;
+											</a>
+										</div>
 									</div>
-									<a
-										href={`${import.meta.env.BASE_URL}/blog/${post.id.replace("/index", "")}/`}
-										class="read-more-link"
+								</article>
+							)
+						}
+
+						<div class="articles-grid" id="articles-container">
+							{
+								postsWithTime.slice(1).map((post) => (
+									<article
+										class="article-card"
+										data-title={post.data.title.toLowerCase()}
+										data-desc={post.data.description.toLowerCase()}
+										data-category={post.data.category || ""}
 									>
-										Read →
-									</a>
-								</div>
-							</article>
-						))
-					}
+										<div class="card-header">
+											{
+												post.data.category && (
+													<a
+														href={`${import.meta.env.BASE_URL}/blog/categories/${post.data.category.toLowerCase().replace(/\s+/g, "-")}`}
+														class={`tag-badge ${post.data.category.toLowerCase().replace(/\s+/g, "-")}`}
+													>
+														{post.data.category}
+													</a>
+												)
+											}
+											<span class="read-time-badge">{post.readingTime}</span>
+										</div>
+
+										<div class="card-body">
+											<h3>
+												<a href={`${import.meta.env.BASE_URL}/blog/${post.id.replace("/index", "")}/`}>
+													{post.data.title}
+												</a>
+											</h3>
+											<p>{post.data.description}</p>
+										</div>
+
+										<div class="card-footer">
+											<div class="author-info">
+												<div class="author-avatar">
+													{post.data.author ? post.data.author.charAt(0) : "J"}
+												</div>
+												<span class="author-name">{post.data.author || "Juned Khan"}</span>
+											</div>
+											<a
+												href={`${import.meta.env.BASE_URL}/blog/${post.id.replace("/index", "")}/`}
+												class="read-more-link"
+											>
+												Read →
+											</a>
+										</div>
+									</article>
+								))
+							}
+						</div>
+
+						<div class="no-results" id="no-results-msg">
+							<svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+							<h3>No articles found</h3>
+							<p>Try searching for a different keyword or category.</p>
+						</div>
+					</section>
 				</div>
 
-				<div class="no-results" id="no-results-msg">
-					<svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-					<h3>No articles found</h3>
-					<p>Try searching for a different keyword or category.</p>
-				</div>
-			</section>
-
-			<section class="newsletter-section glass">
-				<div class="newsletter-content">
-					<h2>Subscribe to Dev Notes</h2>
-					<p>Get practical Salesforce developer tips, tricks, and tutorials delivered directly to your inbox monthly.</p>
-					<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! (Simulated)'); this.reset();">
-						<input type="email" placeholder="Enter your email address" required aria-label="Email address" />
-						<button type="submit" class="btn-subscribe">Subscribe</button>
-					</form>
-				</div>
-			</section>
+				<!-- Sidebar Content Right (30%) -->
+				<Sidebar />
+			</div>
 		</main>
 		<Footer />
 
 		<script>
 			const searchInput = document.getElementById("home-search") as HTMLInputElement;
 			const pills = document.querySelectorAll(".hero-pills .pill");
-			const articles = document.querySelectorAll("#articles-container .article-card") as NodeListOf<HTMLElement>;
+			const articles = document.querySelectorAll("#articles-container .article-card, .featured-card") as NodeListOf<HTMLElement>;
 			const noResults = document.getElementById("no-results-msg") as HTMLElement;
 
 			let activeCategory = "all";
@@ -492,6 +546,7 @@ const postsWithTime = posts.map((post) => {
 		font-size: 0.75rem;
 		font-weight: 700;
 		text-transform: uppercase;
+		text-decoration: none;
 	}
 
 	/* Tech colors */
@@ -499,6 +554,7 @@ const postsWithTime = posts.map((post) => {
 	.tag-badge.lwc { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
 	.tag-badge.agentforce { background-color: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
 	.tag-badge.integrations { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+	.tag-badge.salesforce-dev-notes { background-color: rgba(79, 70, 229, 0.1); color: #4f46e5; }
 
 	.read-time-badge {
 		font-size: 0.75rem;
@@ -687,6 +743,115 @@ const postsWithTime = posts.map((post) => {
 		
 		.btn-subscribe {
 			width: 100%;
+		}
+	}
+
+	/* Featured Card Redesign */
+	.featured-card {
+		display: flex;
+		flex-direction: column;
+		border-radius: 24px;
+		overflow: hidden;
+		margin-bottom: 3rem;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		border: 1px solid var(--border-color);
+		text-decoration: none;
+	}
+
+	.featured-card:hover {
+		transform: translateY(-6px);
+		box-shadow: var(--shadow-lg);
+		border-color: var(--accent);
+	}
+
+	.featured-img-container {
+		position: relative;
+		width: 100%;
+		height: 280px;
+		overflow: hidden;
+	}
+
+	.featured-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+
+	.featured-card:hover .featured-img {
+		transform: scale(1.03);
+	}
+
+	.featured-category-badge {
+		position: absolute;
+		top: 1.25rem;
+		left: 1.25rem;
+		z-index: 10;
+		box-shadow: var(--shadow-sm);
+	}
+
+	.featured-card-body {
+		padding: 2.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		background: var(--bg-secondary);
+	}
+
+	.featured-meta {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--text-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.featured-card-body h3 {
+		font-size: 1.85rem;
+		line-height: 1.25;
+		margin-bottom: 0;
+	}
+
+	.featured-card-body h3 a {
+		color: var(--text-primary);
+		text-decoration: none;
+	}
+
+	.featured-card-body h3 a:hover {
+		color: var(--accent);
+	}
+
+	.featured-card-body p {
+		color: var(--text-secondary);
+		font-size: 1.05rem;
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.featured-card-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1px solid var(--border-color);
+		padding-top: 1.5rem;
+		margin-top: 0.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.featured-card {
+			flex-direction: row;
+			height: 380px;
+		}
+
+		.featured-img-container {
+			width: 50%;
+			height: 100%;
+		}
+
+		.featured-card-body {
+			width: 50%;
+			justify-content: center;
+			padding: 3rem;
 		}
 	}
 </style>
