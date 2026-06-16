@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-# Astro Starter Kit: Blog
+# Salesforce Dev Notes - Astro Blog
 
-```sh
-npm create astro@latest -- --template blog
-```
+This is the Salesforce Dev Notes blog, a super cool GitHub Pages site hosting guides and tutorials for Salesforce developers.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+It is built using Astro.
 
 Features:
 
@@ -23,11 +20,11 @@ Inside of your Astro project, you'll see the following folders and files:
 ```text
 ├── public/
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
+│   ├── assets/
+│   ├── components/
+│   ├── content/
+│   ├── layouts/
+│   └── pages/
 ├── astro.config.mjs
 ├── README.md
 ├── package.json
@@ -55,14 +52,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
 ## Credit
 
 This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
-=======
-# studious-octo-fishstick
-This is my super cool Github pages site! 
->>>>>>> 03b3a2303e64396dc2c3dd2701c8290c18994325
+
