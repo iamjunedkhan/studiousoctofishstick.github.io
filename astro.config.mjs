@@ -10,10 +10,13 @@ export default defineConfig({
 	base: '/studiousoctofishstick.github.io',
 	integrations: [mdx(), sitemap()],
 	markdown: {
-		shikiConfig: {
-			theme: 'github-dark',
-		},
-	},
+  shikiConfig: {
+    themes: {
+      light: 'github-light',
+      dark: 'one-dark-pro'
+    }
+  }
+},
 	fonts: [
 		{
 			provider: fontProviders.local(),
