@@ -1,7 +1,7 @@
 ---
 title: "Welcome to Salesforce Dev Notes"
 description: "Welcome to Salesforce Dev Notes, a blog dedicated to helping Salesforce developers learn, build, and grow through practical tutorials, real-world examples, and development best practices."
-pubDate: "Jun 22 2026"
+pubDate: "Jun 11 2026"
 heroImage: "./image.png"
 category: "Salesforce Dev Notes"
 author: "Juned Khan"
