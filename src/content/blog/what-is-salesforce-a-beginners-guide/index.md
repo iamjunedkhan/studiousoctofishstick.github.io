@@ -1,10 +1,10 @@
---- 
-title: 'What Is Salesforce? A Beginner’s Guide' 
-description: 'New to Salesforce? Learn what Salesforce is, how it works, and why businesses use it to manage sales, customer relationships, automation, and growth.' 
-pubDate: 'Jun 15 2026' 
-heroImage: './what-is-salesforce.png' 
-category: 'Salesforce Fundamentals' 
-author: 'Juned Khan' 
+---
+title: "What Is Salesforce? A Beginner’s Guide"
+description: "New to Salesforce? Learn what Salesforce is, how it works, and why businesses use it to manage sales, customer relationships, automation, and growth."
+pubDate: "Jun 15 2026"
+heroImage: "./what-is-salesforce.png"
+category: "Salesforce Fundamentals"
+author: "Juned Khan"
 ---
 
 # What Is Salesforce? A Beginner’s Guide
@@ -43,13 +43,13 @@ Think of Salesforce as a digital headquarters for customer relationships.
 
 Instead of departments working in isolation:
 
-* Sales teams track deals
+- Sales teams track deals
 
-* Support teams handle customer issues
+- Support teams handle customer issues
 
-* Marketing teams run campaigns
+- Marketing teams run campaigns
 
-* Managers monitor performance
+- Managers monitor performance
 
 —all within the same connected platform.
 
@@ -83,15 +83,15 @@ At its core, Salesforce stores information in objects, which are similar to data
 
 Common standard objects include:
 
-* Account – a company or organization
+- Account – a company or organization
 
-* Contact – a person associated with an account
+- Contact – a person associated with an account
 
-* Lead – a potential customer
+- Lead – a potential customer
 
-* Opportunity – a sales deal in progress
+- Opportunity – a sales deal in progress
 
-* Case – a customer support issue
+- Case – a customer support issue
 
 Users interact with these records through a web interface, mobile app, or APIs.
 
@@ -143,17 +143,17 @@ Salesforce is used by companies of all sizes, from startups to global enterprise
 
 Common roles include:
 
-* Sales Representatives – manage leads and deals
+- Sales Representatives – manage leads and deals
 
-* Customer Support Agents – resolve cases
+- Customer Support Agents – resolve cases
 
-* Marketing Teams – run campaigns
+- Marketing Teams – run campaigns
 
-* Business Analysts – create reports and dashboards
+- Business Analysts – create reports and dashboards
 
-* Salesforce Admins – configure and maintain the system
+- Salesforce Admins – configure and maintain the system
 
-* Salesforce Developers – build custom features and integrations
+- Salesforce Developers – build custom features and integrations
 
 Industries using Salesforce include healthcare, finance, retail, education, manufacturing, and nonprofits.
 
@@ -163,19 +163,19 @@ Not at all. Despite the name, Salesforce is much broader than sales management.
 
 Organizations use it for:
 
-* Customer support
+- Customer support
 
-* Marketing automation
+- Marketing automation
 
-* Field service management
+- Field service management
 
-* E-commerce
+- E-commerce
 
-* Internal business apps
+- Internal business apps
 
-* Partner portals
+- Partner portals
 
-* Analytics and AI-powered insights
+- Analytics and AI-powered insights
 
 ### Salesforce for Beginners: Key Terms to Know
 
@@ -213,21 +213,21 @@ Let's say a small online store starts using Salesforce.
 
 Before Salesforce:
 
-* Customer inquiries are lost in email threads
+- Customer inquiries are lost in email threads
 
-* Sales leads are tracked in spreadsheets
+- Sales leads are tracked in spreadsheets
 
-* Support requests take days to resolve
+- Support requests take days to resolve
 
 After Salesforce:
 
-* Leads automatically enter the CRM from the website
+- Leads automatically enter the CRM from the website
 
-* Sales reps see the full customer history
+- Sales reps see the full customer history
 
-* Support cases are tracked and assigned automatically
+- Support cases are tracked and assigned automatically
 
-* Managers get dashboards showing sales trends and customer satisfaction
+- Managers get dashboards showing sales trends and customer satisfaction
 
 The result is better organization, faster responses, and improved customer relationships.
 
@@ -237,17 +237,17 @@ Salesforce is one of the most widely used enterprise platforms in the world, and
 
 Career paths include:
 
-* Salesforce Administrator
+- Salesforce Administrator
 
-* Salesforce Developer
+- Salesforce Developer
 
-* Salesforce Consultant
+- Salesforce Consultant
 
-* Business Analyst
+- Business Analyst
 
-* Solution Architect
+- Solution Architect
 
-* Technical Architect
+- Technical Architect
 
 Because businesses rely heavily on Salesforce, these skills are highly transferable across industries.
 
@@ -271,12 +271,12 @@ Once you grasp these basics, the rest of the Salesforce ecosystem becomes much e
 
 If you're continuing your Salesforce journey, these topics are great next steps:
 
-* Understanding Standard vs Custom Objects
+- Understanding Standard vs Custom Objects
 
-* Salesforce Architecture Explained
+- Salesforce Architecture Explained
 
-* What Are Apex Triggers?
+- What Are Apex Triggers?
 
-* Introduction to Salesforce Flow
+- Introduction to Salesforce Flow
 
 Welcome to the Salesforce ecosystem — it's a big world, but a rewarding one to learn. :::
