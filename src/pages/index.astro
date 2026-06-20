@@ -205,7 +205,7 @@ const postsWithTime = posts.map((post) => {
             </div>
             <div class="articles-grid" id="articles-container">
               {
-                postsWithTime.slice(1).map((post) => (
+                postsWithTime.map((post) => (
                   <article
                     class="article-card"
                     data-title={post.data.title.toLowerCase()}
