@@ -2,7 +2,7 @@
 title: "Mastering Record Types in Salesforce"
 description: "Learn how Record Types work in Salesforce, when to use them, and the best practices for implementing them effectively."
 pubDate: "Jun 28 2026"
-heroImage: "./mastering-record-types-in-salesforce.png"
+heroImage: "./mastering-record-types-in-salesforce-2.png"
 category: "Salesforce Fundamentals"
 author: "Juned Khan"
 ---
