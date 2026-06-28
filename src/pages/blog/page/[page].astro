@@ -54,7 +54,7 @@ const categories = [...new Set([...predefined, ...postCategories])].sort();
 						/>
 					</div>
 					<div class="filter-pills">
-						<a href={`${import.meta.env.BASE_URL}/blog`} class="pill active">All</a>
+						<a href={`${import.meta.env.BASE_URL}/`} class="pill active">All</a>
 						{
 							categories.map((cat) => {
 								const catSlug = cat!.toLowerCase().replace(/\s+/g, "-");
