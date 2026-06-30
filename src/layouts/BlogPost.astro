@@ -96,8 +96,6 @@ if (relatedPosts.length === 0) {
                   <Image
                     src={heroImage}
                     alt={title}
-                    width={1200}
-                    height={600}
                     class="hero-img"
                   />
                 </div>
@@ -687,13 +685,20 @@ if (relatedPosts.length === 0) {
   .hero-image-container {
     margin: 2rem -3rem;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-tertiary);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
   }
 
   .hero-img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
+    max-height: 500px;
+    object-fit: contain;
     display: block;
-    object-fit: cover;
   }
 
   .divider {
